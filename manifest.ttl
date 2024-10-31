@@ -1,0 +1,6 @@
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://skyhawk.com/plugins/skhlooper> a lv2:Plugin .
+<http://skyhawk.com/plugins/skhlooper> lv2:binary <skhlooper.so> .
+<http://skyhawk.com/plugins/skhlooper> rdfs:seeAlso <skhlooper.ttl>, <modgui.ttl> .

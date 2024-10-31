@@ -1,0 +1,181 @@
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix pprops: <http://lv2plug.in/ns/ext/port-props#>.
+@prefix units: <http://lv2plug.in/ns/extensions/units#> .
+@prefix state:   <http://lv2plug.in/ns/ext/state#> .
+@prefix opts:  <http://lv2plug.in/ns/ext/options#> .
+
+<https://github.com/skyhawk#me>
+	a foaf:Person ;
+	foaf:name "Skyhawk" ;
+	foaf:mbox <mailto:sutin.boris@gmail.com> ;
+	rdfs:seeAlso <https://github.com/skyhawk> .
+
+
+<http://skyhawk.com/plugins/skhlooper>
+	a lv2:Plugin, lv2:UtilityPlugin;
+	lv2:project <http://lv2plug.in/ns/lv2>;
+	doap:name "SKHLooper";
+	doap:license <http://opensource.org/licenses/isc>;
+	
+	lv2:minorVersion 1;
+    lv2:microVersion 2;
+
+    rdfs:comment """
+    Plugin SKHLooper
+    """;
+
+	
+	lv2:port
+		[
+			a lv2:AudioPort, lv2:InputPort;
+			lv2:index 0;
+			lv2:symbol "in1";
+			lv2:name "In1"
+		],
+		[
+			a lv2:AudioPort, lv2:InputPort;
+			lv2:index 1;
+			lv2:symbol "in2";
+			lv2:name "In2"
+	    ],
+	    [
+	        a lv2:AudioPort, lv2:OutputPort;
+	        lv2:index 2;
+	        lv2:symbol "out1";
+	        lv2:name "Out1"
+		],
+		[
+			a lv2:AudioPort, lv2:OutputPort;
+			lv2:index 3;
+			lv2:symbol "out2";
+			lv2:name "Out2"
+		],
+		[
+			a lv2:InputPort, lv2:ControlPort;
+			lv2:index 4;
+			lv2:symbol "threshold";
+			lv2:name "Threshold";
+			lv2:default -70.0;
+			lv2:minimum -90.0;
+			lv2:maximum 24.0;
+			units:unit units:db;
+		],
+		[
+			a lv2:ControlPort, lv2:InputPort;
+			lv2:index 5;
+			lv2:symbol "activate";
+			lv2:name "REC & PLAY";
+			lv2:default 0;
+			lv2:minimum 0;
+			lv2:maximum 1;
+			lv2:portProperty lv2:integer, lv2:toggled, pprops:trigger;
+		], 
+		[
+			a lv2:ControlPort, lv2:InputPort;
+			lv2:index 6;
+			lv2:symbol "stop";
+			lv2:name "Stop/Play";
+			lv2:default 0;
+			lv2:minimum 0;
+			lv2:maximum 1;
+			lv2:portProperty lv2:integer, lv2:toggled, pprops:trigger;
+		] ,
+		[
+			a lv2:ControlPort, lv2:InputPort;
+			lv2:index 7;
+			lv2:symbol "reset";
+			lv2:name "Reset";
+			lv2:default 0;
+			lv2:minimum 0;
+			lv2:maximum 1;
+			lv2:portProperty lv2:integer, lv2:toggled, pprops:trigger;
+		],
+		[
+			a lv2:ControlPort, lv2:InputPort;
+			lv2:index 8;
+			lv2:symbol "undo";
+			lv2:name "Undo";
+			lv2:default 0;
+			lv2:minimum 0;
+			lv2:maximum 1;
+			lv2:portProperty lv2:integer, lv2:toggled, pprops:trigger;
+		],
+		[
+			a lv2:ControlPort, lv2:InputPort;
+			lv2:index 9;
+			lv2:symbol "redo";
+			lv2:name "Redo";
+			lv2:default 0;
+			lv2:minimum 0;
+			lv2:maximum 1;
+			lv2:portProperty lv2:integer, lv2:toggled, pprops:trigger;
+		],
+		[
+			a lv2:ControlPort, lv2:InputPort;
+			lv2:index 10;
+			lv2:symbol "dub";
+			lv2:name "Dub";
+			lv2:default 0;
+			lv2:minimum 0;
+			lv2:maximum 1;
+			lv2:portProperty lv2:integer, lv2:toggled, pprops:trigger;
+		],
+		[
+			a lv2:InputPort, lv2:ControlPort;
+			lv2:index 11;
+			lv2:symbol "loop_level";
+			lv2:name "Loop level";
+			lv2:default 0.8;
+			lv2:minimum 0.0;
+			lv2:maximum 1.0;
+		],
+		[
+			a lv2:InputPort, lv2:ControlPort;
+			lv2:index 12;
+			lv2:symbol "continudub";
+			lv2:name "Continuous Dub Mode";
+			lv2:default 0.0;
+			lv2:minimum 0.0;
+			lv2:maximum 1.0;
+			lv2:portProperty lv2:integer, lv2:toggled;
+		],
+		[
+			a lv2:ControlPort , lv2:OutputPort;
+			lv2:index 13;
+			lv2:symbol "position";
+			lv2:name "Position";
+			lv2:minimum 0.0;
+			lv2:maximum 120.0;
+			
+			
+		],
+		[
+			a lv2:ControlPort , lv2:OutputPort;
+			lv2:index 14;
+			lv2:symbol "lenght";
+			lv2:name "Lenght";
+			lv2:minimum 0.0;
+			lv2:maximum 120.0;
+			
+			
+		],
+		[
+			a lv2:ControlPort , lv2:OutputPort;
+			lv2:index 15;
+			lv2:symbol "state";
+			lv2:name "State";
+			lv2:default 0.0 ;
+			lv2:minimum 0.0;
+			lv2:maximum 3.0;
+			lv2:portProperty lv2:enumeration ;
+            lv2:scalePoint [rdfs:label "STOP"; rdf:value 0];
+            lv2:scalePoint [rdfs:label "WAIT"; rdf:value 1];
+            lv2:scalePoint [rdfs:label "REC"; rdf:value 2];
+			lv2:scalePoint [rdfs:label "PLAY"; rdf:value 3];
+			
+		].
+		
